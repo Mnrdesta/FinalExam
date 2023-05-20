@@ -10,9 +10,9 @@ def load_model():
 
 def import_and_predict(image, model):
     size = (28, 28)
-    image = ImageOps.fit(image, size, Image.ANTIALIAS).convert("L")  # Resize and convert to grayscale
+    image = ImageOps.fit(image, size, Image.ANTIALIAS).convert("RGB")  # Resize and convert to RGB
     img = np.asarray(image) / 255.0  # Normalize pixel values
-    img_reshape = img.reshape(1, 784)  # Reshape to match the model's input shape
+    img_reshape = img.reshape(1, 28, 28, 3)  # Reshape to match the model's input shape
     prediction = model.predict(img_reshape)
     return prediction
 
