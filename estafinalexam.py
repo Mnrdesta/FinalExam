@@ -5,11 +5,11 @@ import numpy as np
 
 @st.cache(allow_output_mutation=True)
 def load_model():
-    model = tf.keras.models.load_model('Finals.h5')
+    model = tf.keras.models.load_model('/content/Finals.h5')
     return model
 
 def import_and_predict(image_data, model):
-    size = (64, 64)
+    size = (28, 28)
     image = ImageOps.fit(image_data, size, Image.ANTIALIAS)
     img = np.asarray(image)
     img_reshape = img[np.newaxis, ...]
