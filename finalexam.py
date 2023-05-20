@@ -4,6 +4,9 @@ from PIL import Image, ImageOps
 import numpy as np
 
 @st.cache(allow_output_mutation=True, hash_funcs={tf.keras.models.Model: id})
+def load_model():
+    model = tf.keras.models.load_model('esta.h5')
+    return model
 
 def import_and_predict(image_data, model):
     size = (64, 64)
@@ -22,7 +25,7 @@ file = st.file_uploader("Choose digit photo from computer", type=["jpg", "png"])
 if file is None:
     st.text("Please upload an image file")
 else:
-    model = tf.keras.models.load_model('Finals.h5')
+    model = load_model()
     image = Image.open(file)
     st.image(image, use_column_width=True)
     prediction = import_and_predict(image, model)
