@@ -4,7 +4,6 @@ from PIL import Image, ImageOps
 import numpy as np
 
 @st.cache(allow_output_mutation=True, hash_funcs={tf.keras.models.Model: id})
-    return model
 
 def import_and_predict(image_data, model):
     size = (64, 64)
