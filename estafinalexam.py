@@ -3,13 +3,13 @@ import tensorflow as tf
 from PIL import Image, ImageOps
 import numpy as np
 
-@st.cache(allow_output_mutation=True)
+@st.cache(allow_output_mutation=True, hash_funcs={tf.keras.models.Model: id})
 def load_model():
-    model = tf.keras.models.load_model('/content/Finals.h5')
+    model = tf.keras.models.load_model('Finals.h5')
     return model
 
 def import_and_predict(image_data, model):
-    size = (28, 28)
+    size = (64, 64)
     image = ImageOps.fit(image_data, size, Image.ANTIALIAS)
     img = np.asarray(image)
     img_reshape = img[np.newaxis, ...]
